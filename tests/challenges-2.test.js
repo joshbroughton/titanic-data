@@ -176,7 +176,7 @@ describe('Challenge 2 Titanic', () => {
 		expect(index.makeHistogram(data, 'fare', 10)).toEqual(Array.from(fares, v => v || 0))
 	})
 
-	test.skip('Test normalizeProperty', () => {
+	test('Test normalizeProperty', () => {
 		const ages = data.filter(p => p.fields.age !== undefined).map(p => p.fields.age)
 		const maxAge = Math.max(...ages)
 		const normalizedAges = ages.map(v => v / maxAge)
@@ -189,7 +189,7 @@ describe('Challenge 2 Titanic', () => {
 		expect(index.normalizeProperty(data, 'fare')).toEqual(normalizedFares)
 	})
 
-	test.skip('Test getUniqueValues', () => {
+	test('Test getUniqueValues', () => {
 		expect(index.getUniqueValues(data, 'pclass').sort()).toEqual(['3', '2', '1'].sort())
 		expect(index.getUniqueValues(data, 'embarked').sort()).toEqual(['C', 'S', 'Q'].sort())
 		expect(index.getUniqueValues(data, 'sex').sort()).toEqual(['male', 'female'].sort())

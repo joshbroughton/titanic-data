@@ -97,7 +97,7 @@ const countAllProperty = (data, property) => {
 
 const makeHistogram = (data, property, step) => {
 	result = [];
-	values = getAllValuesForProperty(data, property);
+	let values = getAllValuesForProperty(data, property);
 	values = values.filter((val) => val !== undefined)
 	values.sort((a, b) => a - b);
 	let i = 0
@@ -128,7 +128,10 @@ const makeHistogram = (data, property, step) => {
 // to divide each value by the maximum value in the array.
 
 const normalizeProperty = (data, property) => {
-	return []
+	let values = getAllValuesForProperty(data, property);
+	values = values.filter((val) => val !== undefined);
+	let max = values.reduce((prev, curr) => curr > prev ? curr : prev)
+	return values.map((val) => val / max)
 }
 
 // Normalizing is an important process that can make many other
@@ -148,7 +151,11 @@ const normalizeProperty = (data, property) => {
 // would return ['male', 'female']
 
 const getUniqueValues = (data, property) => {
-	return []
+	result = {};
+	let values = getAllValuesForProperty(data, property);
+	values.forEach((val) => val in result ? result : result[val] = true);
+	delete result.undefined;
+	return Object.keys(result);
 }
 
 // There are a couple ways to do this.
