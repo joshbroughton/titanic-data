@@ -96,7 +96,19 @@ const countAllProperty = (data, property) => {
 // ages 0 - 10, 10 - 20, 20 - 30 etc.
 
 const makeHistogram = (data, property, step) => {
-	return []
+	result = [];
+	values = getAllValuesForProperty(data, property);
+	values = values.filter((val) => val !== undefined)
+	values.sort((a, b) => a - b);
+	let i = 0
+	values.forEach((val) => {
+		while (val >= (step * (i+1))) {
+			i += 1;
+		}
+		result[i] ? result[i] += 1 : result[i] = 1
+	})
+	result = Array.from(result, (e) => e === undefined ? 0 : e)
+	return result;
 }
 
 // Note! There may not be no values for a particular step. For example

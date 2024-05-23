@@ -179,7 +179,7 @@ const getAverageFare = (data) => {
 
 const getMedianFare = (data) => {
 	data = data.filter(p => "fare" in p.fields).map(p => p.fields.fare)
-	data.sort((a, b) => b - a)
+	data.sort((a, b) => a - b)
 	length = data.length
 	if (length % 2 !== 0) {
 		return(data[Math.floor(length / 2)])

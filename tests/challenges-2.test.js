@@ -139,7 +139,7 @@ describe('Challenge 2 Titanic', () => {
 		expect(index.countAllProperty(data, 'pclass')).toEqual(pclassCounts)
 	})
 
-	test.skip('Test makeHistogram', () => {
+	test('Test makeHistogram', () => {
 		const ages10 = data
 			.filter(p => p.fields.age !== undefined)
 			.reduce((acc, p) => {
